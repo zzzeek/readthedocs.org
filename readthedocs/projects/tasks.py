@@ -342,8 +342,8 @@ def build_docs(project, version, pdf, man, epub, record, force, update_output={}
             #Build.objects.create(
                 #project=project,
                 #version=version
-                project='/api/v1/project/%s/' % project.pk
-                version='/api/v1/version/%s/' % version.pk
+                project='/api/v1/project/%s/' % project.pk,
+                version='/api/v1/version/%s/' % version.pk,
                 success=successful,
                 setup=output_data,
                 setup_error=error_data,
