@@ -338,15 +338,19 @@ def build_docs(project, version, pdf, man, epub, record, force, update_output={}
                 if data:
                     output_data += data[1]
                     error_data += data[2]
-            Build.objects.create(
-                project=project,
+            api.build.post(dict(
+            #Build.objects.create(
+                #project=project,
+                #version=version
+                project='/api/v1/project/%s/" % project.pk
+                version='/api/v1/version/%s/" % version.pk
                 success=successful,
                 setup=output_data,
                 setup_error=error_data,
                 output=html_output[1],
                 error=html_output[2],
-                version=version
-            )
+            #)
+            ))
         #XXX:dc: all builds should have their output checked
         if pdf:
             pdf_builder = builder_loading.get('sphinx_pdf')(version)
